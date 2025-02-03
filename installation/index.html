@@ -154,7 +154,17 @@
             background: var(--neon-green);
             color: black;
         }
+    .neon-link {
+        color: #00e696; /* Neon green */
+        text-decoration: none; /* Remove underline */
+        font-weight: bold;
+        transition: color 0.3s ease, text-shadow 0.3s ease;
+    }
 
+    .neon-link:hover {
+        color: #00b4d8; /* Neon blue on hover */
+        text-shadow: 0 0 10px #00b4d8, 0 0 20px #00e696; /* Glowing effect */
+    }
         /* Configuration Highlighting */
         .config-key { color: var(--neon-cyan); }
         .config-value { color: var(--neon-green); }
@@ -225,10 +235,11 @@
             <p>Clone the bot's source code from GitHub:</p>
             <div class="code-block">
                 <button class="copy-btn">Copy</button>
-                <code>git clone https://github.com/yourusername/neonbot.git<br>cd neonbot</code>
+                <code>git clone https://github.com/noxic-dev/empty-discord-bot.git<br>cd empty-discord-bot</code>
             </div>
             <div class="note">
-                <strong>Prerequisites:</strong> Node.js v18+ and Git installed
+<strong>Prerequisites:</strong> 
+<a href="https://bun.sh/" target="_blank" class="neon-link">BunJS V1.2.1+</a> and <a href="https://git-scm.com/downloads" target="_blank" class="neon-link">Git</a> installed
             </div>
         </div>
 
@@ -236,17 +247,18 @@
             <div class="step-number">2</div>
             <h2 class="step-title">Configure config.json</h2>
             <p>Create and modify the configuration file:</p>
-            <div class="file-structure">
-                <span class="config-key">"prefix"</span>: <span class="config-value">"!"</span>,<br>
-                <span class="config-key">"owners"</span>: [<span class="config-value">"YOUR_DISCORD_ID"</span>],<br>
-                <span class="config-key">"defaultSettings"</span>: {<br>
-                &nbsp;&nbsp;<span class="config-key">"language"</span>: <span class="config-value">"en"</span>,<br>
-                &nbsp;&nbsp;<span class="config-key">"modLogChannel"</span>: <span class="config-value">"mod-logs"</span><br>
-                }
-            </div>
+<div class="file-structure">
+    <pre>
+        <code>
+<span class="bracket">{</span>
+    <span class="config-key">"botStatus"</span>: <span class="config-value">"Bot made with template by Noxics"</span>
+<span class="bracket">}</span>
+        </code>
+    </pre>
+</div>
             <div class="code-block">
                 <button class="copy-btn">Copy</button>
-                <code>nano config.json</code>
+                <code>vim config.json</code>
             </div>
         </div>
 
@@ -256,7 +268,7 @@
             <p>Create environment variables for sensitive data:</p>
             <div class="code-block">
                 <button class="copy-btn">Copy</button>
-                <code>TOKEN=YOUR_BOT_TOKEN_HERE<br>MONGO_URI=mongodb://localhost:27017/neonbot<br>CLIENT_ID=YOUR_APPLICATION_ID</code>
+                <code>TOKEN=YOUR_BOT_TOKEN_HERE</code>
             </div>
             <div class="warning">
                 ⚠️ Never commit your .env file to version control!
@@ -269,12 +281,12 @@
             <p>Install dependencies and start the bot:</p>
             <div class="code-block">
                 <button class="copy-btn">Copy</button>
-                <code>npm install<br>npm start</code>
+                <code>bun install<br>bun dev</code>
             </div>
             <p>Expected successful output:</p>
             <div class="code-block">
                 <code>
-Thank you for using Noxic's Discord bot preset! https://github.com/noxic-dev/empty-discord-bot/ <br> </br>
+Thank you for using Noxic's Discord bot preset! https://github.com/....<br>
 To disable this message, edit the showIntro option in config.json.
 </code>
             </div>
@@ -290,7 +302,7 @@ To disable this message, edit the showIntro option in config.json.
             </div>
             <p>Test basic commands:</p>
             <div class="code-block">
-                <code>!ping → 🏓 Latency: 120ms<br>!help → Shows command list<br>!stats → Displays bot statistics</code>
+                <code>!ping → 🏓 Latency: 120ms<br>/ping → 🏓 Latency: 120ms</code>
             </div>
         </div>
     </div>
