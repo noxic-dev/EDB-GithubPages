@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NeonBot - Discord Bot</title>
+    <style>
+        :root {
+            --neon-green: #00e696;
+            --neon-cyan: #00b4d8;
+            --dark-bg: #0a0a0a;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background: var(--dark-bg);
+            min-height: 100vh;
+            overflow-x: hidden;
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        /* Animated background effects */
+        .gradient-blob {
+            position: fixed;
+            width: 300px;
+            height: 300px;
+            background: linear-gradient(45deg, var(--neon-green), var(--neon-cyan));
+            border-radius: 50%;
+            filter: blur(100px);
+            opacity: 0.1;
+            animation: float 12s infinite;
+            z-index: -1;
+        }
+
+        .blob1 { top: 20%; left: 10%; }
+        .blob2 { top: 60%; right: 15%; animation-delay: -4s; }
+        .blob3 { bottom: 10%; left: 30%; animation-delay: -8s; }
+
+        nav {
+            padding: 1.5rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            background: linear-gradient(45deg, var(--neon-green), var(--neon-cyan));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-shadow: 0 0 20px rgba(0, 230, 150, 0.3);
+        }
+
+        .hero {
+            min-height: 80vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 2rem;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            background: rgba(20, 20, 20, 0.95);
+            padding: 4rem 6rem;
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 0 50px rgba(0, 230, 150, 0.1);
+            transform: translateY(0);
+            transition: all 0.3s ease;
+        }
+
+        .hero-content:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 0 70px rgba(0, 230, 150, 0.2);
+        }
+
+        .headline {
+            background: linear-gradient(45deg, var(--neon-green), var(--neon-cyan));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            letter-spacing: -1.5px;
+            text-shadow: 0 0 20px rgba(0, 230, 150, 0.3);
+        }
+
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            padding: 4rem 5%;
+        }
+
+        .feature-card {
+            background: rgba(20, 20, 20, 0.9);
+            padding: 2rem;
+            border-radius: 15px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--neon-green);
+            box-shadow: 0 0 30px rgba(0, 230, 150, 0.2);
+        }
+
+        .btn {
+            background: linear-gradient(45deg, var(--neon-green), var(--neon-cyan));
+            color: white;
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 50px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-top: 2rem;
+        }
+
+        .btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 30px rgba(0, 230, 150, 0.3);
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0); }
+            25% { transform: translate(100px, 100px); }
+            50% { transform: translate(-50px, 150px); }
+            75% { transform: translate(-100px, -50px); }
+        }
+
+        @media (max-width: 768px) {
+            .hero-content {
+                padding: 2rem;
+                margin: 1rem;
+            }
+            
+            .headline {
+                font-size: 2.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="gradient-blob blob1"></div>
+    <div class="gradient-blob blob2"></div>
+    <div class="gradient-blob blob3"></div>
+
+    <nav>
+        <div class="logo">NeonBot</div>
+        <div class="nav-links">
+            <button class="btn">Invite Bot</button>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h1 class="headline">Next-Level Discord Experience</h1>
+            <p class="content">
+                NeonBot brings futuristic moderation, entertainment, and utility to your server. 
+                Powered by AI and wrapped in cybernetic elegance.
+            </p>
+            <button class="btn">Get Started</button>
+        </div>
+    </section>
+
+    <section class="features">
+        <div class="feature-card">
+            <h3>🤖 AI-Powered</h3>
+            <p>Smart moderation and natural language processing capabilities</p>
+        </div>
+        <div class="feature-card">
+            <h3>⚡ Lightning Fast</h3>
+            <p>Optimized performance with 99.9% uptime guarantee</p>
+        </div>
+        <div class="feature-card">
+            <h3>🔧 Fully Customizable</h3>
+            <p>Personalize every aspect to match your server's identity</p>
+        </div>
+    </section>
+
+    <script>
+        // Add scroll animation for feature cards
+        const cards = document.querySelectorAll('.feature-card');
+        
+        const observer = new IntersectionObserver(entries => {
+            entries.forEach(entry => {
+                if(entry.isIntersecting) {
+                    entry.target.style.opacity = 1;
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        });
+
+        cards.forEach(card => {
+            card.style.opacity = 0;
+            card.style.transform = 'translateY(30px)';
+            card.style.transition = 'all 0.6s ease';
+            observer.observe(card);
+        });
+    </script>
+</body>
+</html>
