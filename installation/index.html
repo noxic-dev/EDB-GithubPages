@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NeonBot - Installation Guide</title>
+    <title>NeonBot - Developer Guide</title>
     <style>
-        /* Reuse existing styles from previous page */
         :root {
             --neon-green: #00e696;
             --neon-cyan: #00b4d8;
             --dark-bg: #0a0a0a;
+            --dark-container: rgba(20, 20, 20, 0.95);
         }
 
         * {
@@ -26,6 +26,7 @@
             color: rgba(255, 255, 255, 0.9);
         }
 
+        /* Animated background blobs */
         .gradient-blob {
             position: fixed;
             width: 300px;
@@ -42,6 +43,7 @@
         .blob2 { top: 60%; right: 15%; animation-delay: -4s; }
         .blob3 { bottom: 10%; left: 30%; animation-delay: -8s; }
 
+        /* Navigation */
         nav {
             padding: 1.5rem 5%;
             display: flex;
@@ -60,7 +62,26 @@
             text-shadow: 0 0 20px rgba(0, 230, 150, 0.3);
         }
 
-        /* Installation Guide Specific Styles */
+        /* Buttons */
+        .btn {
+            background: linear-gradient(45deg, var(--neon-green), var(--neon-cyan));
+            color: white;
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 50px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 30px rgba(0, 230, 150, 0.3);
+        }
+
+        /* Guide Container */
         .guide-container {
             max-width: 1000px;
             margin: 4rem auto;
@@ -77,8 +98,9 @@
             color: transparent;
         }
 
+        /* Step Cards */
         .step-card {
-            background: rgba(20, 20, 20, 0.9);
+            background: var(--dark-container);
             border: 1px solid rgba(255, 255, 255, 0.1);
             border-radius: 15px;
             padding: 2rem;
@@ -104,12 +126,7 @@
             margin-bottom: 1rem;
         }
 
-        .step-title {
-            font-size: 1.5rem;
-            margin-bottom: 1rem;
-            color: var(--neon-cyan);
-        }
-
+        /* Code Blocks */
         .code-block {
             background: rgba(0, 0, 0, 0.5);
             padding: 1rem;
@@ -138,6 +155,19 @@
             color: black;
         }
 
+        /* Configuration Highlighting */
+        .config-key { color: var(--neon-cyan); }
+        .config-value { color: var(--neon-green); }
+
+        /* Warnings & Notes */
+        .warning {
+            border: 1px solid #ff5555;
+            background: rgba(255, 85, 85, 0.05);
+            padding: 1rem;
+            border-radius: 5px;
+            margin: 1rem 0;
+        }
+
         .note {
             padding: 1rem;
             border-left: 3px solid var(--neon-green);
@@ -146,6 +176,15 @@
             border-radius: 5px;
         }
 
+        /* Animations */
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0); }
+            25% { transform: translate(100px, 100px); }
+            50% { transform: translate(-50px, 150px); }
+            75% { transform: translate(-100px, -50px); }
+        }
+
+        /* Responsive Design */
         @media (max-width: 768px) {
             .guide-container {
                 padding: 0 1rem;
@@ -153,6 +192,14 @@
             
             .guide-title {
                 font-size: 2rem;
+            }
+            
+            .step-card {
+                padding: 1.5rem;
+            }
+            
+            .btn {
+                padding: 0.8rem 1.5rem;
             }
         }
     </style>
@@ -165,84 +212,103 @@
     <nav>
         <a href="index.html" class="logo">NeonBot</a>
         <div class="nav-links">
-            <button class="btn">Invite Bot</button>
+            <button class="btn">Documentation</button>
         </div>
     </nav>
 
     <div class="guide-container">
-        <h1 class="guide-title">Installation Guide</h1>
-        
+        <h1 class="guide-title">Developer Setup Guide</h1>
+
         <div class="step-card">
             <div class="step-number">1</div>
-            <h2 class="step-title">Invite the Bot</h2>
-            <p>Click the invite button below to add NeonBot to your Discord server:</p>
-            <button class="btn" style="margin: 1rem 0">Invite to Discord</button>
+            <h2 class="step-title">Clone Repository</h2>
+            <p>Clone the bot's source code from GitHub:</p>
+            <div class="code-block">
+                <button class="copy-btn">Copy</button>
+                <code>git clone https://github.com/yourusername/neonbot.git<br>cd neonbot</code>
+            </div>
             <div class="note">
-                <strong>Note:</strong> Requires "Manage Server" permissions
+                <strong>Prerequisites:</strong> Node.js v18+ and Git installed
             </div>
         </div>
 
         <div class="step-card">
             <div class="step-number">2</div>
-            <h2 class="step-title">Set Up Permissions</h2>
-            <p>After inviting, configure the bot's permissions:</p>
-            <div class="code-block">
-                <button class="copy-btn">Copy</button>
-                <code>/setup-permissions administrator</code>
+            <h2 class="step-title">Configure config.json</h2>
+            <p>Create and modify the configuration file:</p>
+            <div class="file-structure">
+                <span class="config-key">"prefix"</span>: <span class="config-value">"!"</span>,<br>
+                <span class="config-key">"owners"</span>: [<span class="config-value">"YOUR_DISCORD_ID"</span>],<br>
+                <span class="config-key">"defaultSettings"</span>: {<br>
+                &nbsp;&nbsp;<span class="config-key">"language"</span>: <span class="config-value">"en"</span>,<br>
+                &nbsp;&nbsp;<span class="config-key">"modLogChannel"</span>: <span class="config-value">"mod-logs"</span><br>
+                }
             </div>
-            <p>Or specify custom permissions:</p>
             <div class="code-block">
                 <button class="copy-btn">Copy</button>
-                <code>/setup-permissions manage_roles send_messages</code>
+                <code>nano config.json</code>
             </div>
         </div>
 
         <div class="step-card">
             <div class="step-number">3</div>
-            <h2 class="step-title">Configuration</h2>
-            <p>Set your server's default configuration:</p>
+            <h2 class="step-title">Set Up .env File</h2>
+            <p>Create environment variables for sensitive data:</p>
             <div class="code-block">
                 <button class="copy-btn">Copy</button>
-                <code>/config set prefix=!<br>/config set language=en</code>
+                <code>TOKEN=YOUR_BOT_TOKEN_HERE<br>MONGO_URI=mongodb://localhost:27017/neonbot<br>CLIENT_ID=YOUR_APPLICATION_ID</code>
             </div>
-            <div class="note">
-                <strong>Pro Tip:</strong> Use /config help for all configuration options
+            <div class="warning">
+                ⚠️ Never commit your .env file to version control!
             </div>
         </div>
 
         <div class="step-card">
             <div class="step-number">4</div>
-            <h2 class="step-title">Verification</h2>
-            <p>Confirm the bot is working properly:</p>
+            <h2 class="step-title">Install & Run</h2>
+            <p>Install dependencies and start the bot:</p>
             <div class="code-block">
                 <button class="copy-btn">Copy</button>
-                <code>/ping</code>
+                <code>npm install<br>npm start</code>
             </div>
-            <p>Expected response:</p>
+            <p>Expected successful output:</p>
             <div class="code-block">
-                <code>🏓 Pong! Latency: 120ms</code>
+                <code>🟢 Connected to Discord as NeonBot#1234<br>🟡 Monitoring 1 server(s)</code>
+            </div>
+        </div>
+
+        <div class="step-card">
+            <div class="step-number">5</div>
+            <h2 class="step-title">Invite & Test</h2>
+            <p>Generate your bot invite URL:</p>
+            <div class="code-block">
+                <button class="copy-btn">Copy</button>
+                <code>https://discord.com/oauth2/authorize?client_id=${CLIENT_ID}&permissions=8&scope=bot</code>
+            </div>
+            <p>Test basic commands:</p>
+            <div class="code-block">
+                <code>!ping → 🏓 Latency: 120ms<br>!help → Shows command list<br>!stats → Displays bot statistics</code>
             </div>
         </div>
     </div>
 
     <script>
-        // Copy button functionality
+        // Copy Functionality
         document.querySelectorAll('.copy-btn').forEach(button => {
-            button.addEventListener('click', (e) => {
-                const code = e.target.parentElement.querySelector('code').innerText;
-                navigator.clipboard.writeText(code);
+            button.addEventListener('click', function(e) {
+                const codeElement = this.parentElement.querySelector('code');
+                const textToCopy = codeElement.innerText;
                 
-                // Visual feedback
-                e.target.textContent = 'Copied!';
-                setTimeout(() => {
-                    e.target.textContent = 'Copy';
-                }, 2000);
+                navigator.clipboard.writeText(textToCopy)
+                    .then(() => {
+                        this.textContent = '✓ Copied';
+                        setTimeout(() => this.textContent = 'Copy', 2000);
+                    })
+                    .catch(err => console.error('Copy failed:', err));
             });
         });
 
-        // Scroll animations for step cards
-        const steps = document.querySelectorAll('.step-card');
-        
+        // Scroll Animations
         const observer = new IntersectionObserver(entries => {
             entries.forEach(entry => {
                 if(entry.isIntersecting) {
@@ -252,11 +318,11 @@
             });
         });
 
-        steps.forEach(step => {
-            step.style.opacity = 0;
-            step.style.transform = 'translateY(30px)';
-            step.style.transition = 'all 0.6s ease';
-            observer.observe(step);
+        document.querySelectorAll('.step-card').forEach(card => {
+            card.style.opacity = 0;
+            card.style.transform = 'translateY(30px)';
+            card.style.transition = 'all 0.6s ease';
+            observer.observe(card);
         });
     </script>
 </body>
