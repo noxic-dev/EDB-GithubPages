@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NeonBot - Installation Guide</title>
+    <style>
+        /* Reuse existing styles from previous page */
+        :root {
+            --neon-green: #00e696;
+            --neon-cyan: #00b4d8;
+            --dark-bg: #0a0a0a;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background: var(--dark-bg);
+            min-height: 100vh;
+            overflow-x: hidden;
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        .gradient-blob {
+            position: fixed;
+            width: 300px;
+            height: 300px;
+            background: linear-gradient(45deg, var(--neon-green), var(--neon-cyan));
+            border-radius: 50%;
+            filter: blur(100px);
+            opacity: 0.1;
+            animation: float 12s infinite;
+            z-index: -1;
+        }
+
+        .blob1 { top: 20%; left: 10%; }
+        .blob2 { top: 60%; right: 15%; animation-delay: -4s; }
+        .blob3 { bottom: 10%; left: 30%; animation-delay: -8s; }
+
+        nav {
+            padding: 1.5rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            background: linear-gradient(45deg, var(--neon-green), var(--neon-cyan));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-shadow: 0 0 20px rgba(0, 230, 150, 0.3);
+        }
+
+        /* Installation Guide Specific Styles */
+        .guide-container {
+            max-width: 1000px;
+            margin: 4rem auto;
+            padding: 0 2rem;
+        }
+
+        .guide-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            background: linear-gradient(45deg, var(--neon-green), var(--neon-cyan));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .step-card {
+            background: rgba(20, 20, 20, 0.9);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            transition: all 0.3s ease;
+        }
+
+        .step-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--neon-green);
+            box-shadow: 0 0 30px rgba(0, 230, 150, 0.2);
+        }
+
+        .step-number {
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(45deg, var(--neon-green), var(--neon-cyan));
+            border-radius: 50%;
+            text-align: center;
+            line-height: 40px;
+            font-weight: bold;
+            margin-bottom: 1rem;
+        }
+
+        .step-title {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--neon-cyan);
+        }
+
+        .code-block {
+            background: rgba(0, 0, 0, 0.5);
+            padding: 1rem;
+            border-radius: 8px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            margin: 1rem 0;
+            font-family: monospace;
+            position: relative;
+        }
+
+        .copy-btn {
+            position: absolute;
+            top: 0.5rem;
+            right: 0.5rem;
+            background: rgba(255, 255, 255, 0.1);
+            border: none;
+            color: var(--neon-green);
+            padding: 0.25rem 0.75rem;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .copy-btn:hover {
+            background: var(--neon-green);
+            color: black;
+        }
+
+        .note {
+            padding: 1rem;
+            border-left: 3px solid var(--neon-green);
+            background: rgba(0, 230, 150, 0.05);
+            margin: 1rem 0;
+            border-radius: 5px;
+        }
+
+        @media (max-width: 768px) {
+            .guide-container {
+                padding: 0 1rem;
+            }
+            
+            .guide-title {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="gradient-blob blob1"></div>
+    <div class="gradient-blob blob2"></div>
+    <div class="gradient-blob blob3"></div>
+
+    <nav>
+        <a href="index.html" class="logo">NeonBot</a>
+        <div class="nav-links">
+            <button class="btn">Invite Bot</button>
+        </div>
+    </nav>
+
+    <div class="guide-container">
+        <h1 class="guide-title">Installation Guide</h1>
+        
+        <div class="step-card">
+            <div class="step-number">1</div>
+            <h2 class="step-title">Invite the Bot</h2>
+            <p>Click the invite button below to add NeonBot to your Discord server:</p>
+            <button class="btn" style="margin: 1rem 0">Invite to Discord</button>
+            <div class="note">
+                <strong>Note:</strong> Requires "Manage Server" permissions
+            </div>
+        </div>
+
+        <div class="step-card">
+            <div class="step-number">2</div>
+            <h2 class="step-title">Set Up Permissions</h2>
+            <p>After inviting, configure the bot's permissions:</p>
+            <div class="code-block">
+                <button class="copy-btn">Copy</button>
+                <code>/setup-permissions administrator</code>
+            </div>
+            <p>Or specify custom permissions:</p>
+            <div class="code-block">
+                <button class="copy-btn">Copy</button>
+                <code>/setup-permissions manage_roles send_messages</code>
+            </div>
+        </div>
+
+        <div class="step-card">
+            <div class="step-number">3</div>
+            <h2 class="step-title">Configuration</h2>
+            <p>Set your server's default configuration:</p>
+            <div class="code-block">
+                <button class="copy-btn">Copy</button>
+                <code>/config set prefix=!<br>/config set language=en</code>
+            </div>
+            <div class="note">
+                <strong>Pro Tip:</strong> Use /config help for all configuration options
+            </div>
+        </div>
+
+        <div class="step-card">
+            <div class="step-number">4</div>
+            <h2 class="step-title">Verification</h2>
+            <p>Confirm the bot is working properly:</p>
+            <div class="code-block">
+                <button class="copy-btn">Copy</button>
+                <code>/ping</code>
+            </div>
+            <p>Expected response:</p>
+            <div class="code-block">
+                <code>🏓 Pong! Latency: 120ms</code>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Copy button functionality
+        document.querySelectorAll('.copy-btn').forEach(button => {
+            button.addEventListener('click', (e) => {
+                const code = e.target.parentElement.querySelector('code').innerText;
+                navigator.clipboard.writeText(code);
+                
+                // Visual feedback
+                e.target.textContent = 'Copied!';
+                setTimeout(() => {
+                    e.target.textContent = 'Copy';
+                }, 2000);
+            });
+        });
+
+        // Scroll animations for step cards
+        const steps = document.querySelectorAll('.step-card');
+        
+        const observer = new IntersectionObserver(entries => {
+            entries.forEach(entry => {
+                if(entry.isIntersecting) {
+                    entry.target.style.opacity = 1;
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        });
+
+        steps.forEach(step => {
+            step.style.opacity = 0;
+            step.style.transform = 'translateY(30px)';
+            step.style.transition = 'all 0.6s ease';
+            observer.observe(step);
+        });
+    </script>
+</body>
+</html>
